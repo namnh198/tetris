@@ -3,17 +3,13 @@ const nextPiece = document.getElementById('nextPiece');
 
 const tetris = new Tetris(canvas, nextPiece);
 
-const audio = new Audio('audio.mp3');
-audio.play();
-audio.loop = true;
-
+const audio = document.querySelector('audio');
 const musicBtn = document.getElementById('music-btn');
 
 musicBtn.addEventListener('click', () => {
     playToggle = musicBtn.getAttribute('data-audio');
-    if(playToggle === 'true'){
+    if (playToggle === 'true') {
         audio.play();
-        audio.loop = true;
         musicBtn.removeAttribute('data-audio');
         musicBtn.innerText = 'OFF';
     } else {
@@ -24,8 +20,7 @@ musicBtn.addEventListener('click', () => {
 });
 
 document.addEventListener('keydown', (event) => {
-    switch(event.keyCode)
-    {
+    switch (event.keyCode) {
         case 32:
             tetris.player.fall(true);
             return;
